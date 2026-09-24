@@ -1,2 +1,4 @@
 # raw / source assets — keep local, publish only processed files
 Profile and Portfolio picture/
+__pycache__/
+*.pyc
