@@ -11,20 +11,24 @@ Run:
 Then register it in your MCP client (e.g. Claude Desktop `claude_desktop_config.json`):
     {
       "mcpServers": {
-        "argus": { "command": "py", "args": ["C:\\workspace\\portfolio\\argus_mcp_server.py"] }
+        "argus": { "command": "py", "args": ["/path/to/portfolio/argus_mcp_server.py"] }
       }
     }
 """
 from __future__ import annotations
 
 import json
+import os
 import sys
 
 SERVER_NAME = "argus"
 SERVER_VERSION = "0.1.0"
 
-# The Argus repo path — this is the one per-instance seam (edit if you move it).
-ARGUS_REPO = r"C:\workspace\argus"
+# The Argus repo path — the one per-instance seam. Defaults to a sibling checkout
+# of the Argus repo next to this portfolio; override with the ARGUS_REPO env var.
+ARGUS_REPO = os.environ.get("ARGUS_REPO") or os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "argus"
+)
 
 
 def _ensure_argus():
