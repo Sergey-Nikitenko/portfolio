@@ -114,6 +114,22 @@
   a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* ---- demo / terminal ---- */
+  .demo { padding: 0; overflow: hidden; }
+  .term-bar { display: flex; align-items: center; gap: 6px; padding: 10px 16px; background: rgba(4, 33, 44, 0.55); border-bottom: 1px solid var(--line-soft); }
+  .term-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .term-bar .dot.r { background: #ff5f57; }
+  .term-bar .dot.y { background: #febc2e; }
+  .term-bar .dot.g { background: #28c840; }
+  .term-bar .t { margin-left: 10px; color: var(--muted); font-size: 0.8rem; }
+  .term { padding: 18px 20px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.83rem; line-height: 1.75; }
+  .term .ln { white-space: pre-wrap; word-break: break-word; }
+  .term .prompt { color: var(--teal); }
+  .term .muted { color: var(--muted); }
+  .term .key { color: var(--teal-soft); }
+  .term .bad { color: #ff7b72; font-weight: 700; }
+  .demo-note { padding: 0 20px 16px; color: var(--muted); font-size: 0.8rem; }
+
   /* ---- footer ---- */
   .cta { margin-top: 44px; text-align: center; color: var(--muted); }
   .cta a { font-weight: 600; }
@@ -213,6 +229,23 @@
     <ul>
       <li>Custom web catalog hosting coloring books with Amazon affiliate links and an admin panel.</li>
     </ul>
+  </div>
+
+  <h2 class="reveal">See it in action</h2>
+  <div class="glass card reveal demo">
+    <div class="term-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="t">argus — MCP tool call · score_process</span>
+    </div>
+    <div class="term">
+      <div class="ln"><span class="prompt">$</span> agent: is this PowerShell command suspicious?</div>
+      <div class="ln muted">→ score_process(image="powershell.exe", command_line="powershell.exe -nop -w hidden -enc SQBFAFgA")</div>
+      <div class="ln muted">← response:</div>
+      <div class="ln"><span class="key">score</span> 95 · <span class="key">severity</span> critical · <span class="key">decision</span> <span class="bad">QUARANTINE</span></div>
+      <div class="ln muted">reasons: LOLBin/script host, encoded PowerShell, no-profile, hidden window</div>
+      <div class="ln muted">techniques: T1059.001 PowerShell · T1564.003 Hidden Window</div>
+    </div>
+    <div class="demo-note">Real output from <a href="https://github.com/Sergey-Nikitenko/portfolio">argus_mcp_server.py</a> — a live agent tool-call returning a structured verdict with MITRE ATT&amp;CK techniques.</div>
   </div>
 
   <div class="cta reveal">
