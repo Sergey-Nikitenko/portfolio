@@ -6,44 +6,146 @@
 <title>Sergey Nikitenko — AI Solutions Integrator</title>
 <style>
   :root {
-    --bg: #0d1117; --panel: #161b22; --border: #30363d;
-    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950;
+    --bg0: #04151d;
+    --bg1: #0a2b36;
+    --teal: #2ee0c8;
+    --teal-soft: #7ff0e4;
+    --ink: #eafbfd;
+    --muted: #a9cdd6;
+    --panel: rgba(13, 42, 52, 0.5);
+    --panel-strong: rgba(15, 48, 60, 0.7);
+    --line: rgba(46, 224, 200, 0.28);
+    --line-soft: rgba(46, 224, 200, 0.14);
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg); color: var(--text); line-height: 1.6;
+    color: var(--ink);
+    line-height: 1.65;
+    min-height: 100vh;
+    background:
+      radial-gradient(1100px 620px at 12% -8%, rgba(46, 224, 200, 0.12), transparent 60%),
+      radial-gradient(950px 680px at 100% 0%, rgba(88, 166, 255, 0.12), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1));
+    overflow-x: hidden;
   }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
-  header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
-  h1 { font-size: 2.4rem; letter-spacing: -0.5px; }
-  .role { color: var(--accent); font-size: 1.15rem; margin: 8px 0 16px; font-weight: 500; }
-  .tagline { color: var(--muted); max-width: 640px; }
-  h2 { font-size: 1.35rem; margin: 40px 0 16px; letter-spacing: -0.3px; }
-  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* ---- background layers ---- */
+  #bubbles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .rays {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55;
+    background: conic-gradient(from 190deg at 50% -18%,
+      transparent 0deg, rgba(46,224,200,0.06) 10deg, transparent 22deg,
+      transparent 58deg, rgba(46,224,200,0.05) 70deg, transparent 82deg,
+      transparent 118deg, rgba(46,224,200,0.04) 130deg, transparent 142deg);
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding: 64px 24px 80px; }
+
+  /* ---- reveal-on-scroll ---- */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---- glass primitives ---- */
+  .glass {
+    background: var(--panel);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border: 1px solid var(--line-soft);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+  .glass:hover { border-color: var(--line); }
+
+  /* ---- header ---- */
+  header { padding: 44px 40px; margin-bottom: 28px; position: relative; overflow: hidden; }
+  header::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(120deg, transparent 30%, rgba(46,224,200,0.08) 50%, transparent 70%);
+  }
+  .head-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .medallion {
+    flex: 0 0 auto; width: 86px; height: 86px; border-radius: 50%;
+    position: relative; display: grid; place-items: center;
+    background: radial-gradient(circle at 32% 28%, rgba(127,240,228,0.95), rgba(14,168,154,0.9) 60%, rgba(4,33,44,0.95));
+    box-shadow: 0 0 0 1px rgba(127,240,228,0.5), 0 12px 34px rgba(46,224,200,0.35), inset 0 2px 8px rgba(255,255,255,0.5);
+  }
+  .medallion::before {
+    content: ""; position: absolute; inset: 7px; border-radius: 50%;
+    border: 1px solid rgba(234,251,253,0.45);
+  }
+  .medallion span { font-weight: 800; font-size: 1.9rem; letter-spacing: 1px; color: #04211e; position: relative; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -1px; line-height: 1.05; }
+  .role {
+    margin-top: 10px; font-size: 1.18rem; font-weight: 600; color: var(--teal);
+    text-shadow: 0 0 18px rgba(46,224,200,0.4);
+  }
+  .tagline { margin-top: 14px; color: var(--muted); max-width: 640px; }
+
+  /* ---- sections ---- */
+  h2 {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 1.3rem; letter-spacing: -0.3px; margin: 44px 4px 18px;
+  }
+  h2::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 12px var(--teal); flex: 0 0 auto; }
+
+  /* ---- skill chips ---- */
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; }
   .chip {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 999px;
-    padding: 6px 14px; font-size: 0.85rem; color: var(--text);
+    background: var(--panel); border: 1px solid var(--line-soft); border-radius: 999px;
+    padding: 8px 16px; font-size: 0.87rem; color: var(--ink);
+    backdrop-filter: blur(8px); transition: border-color .25s, box-shadow .25s, transform .25s;
   }
-  .project {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
-    padding: 24px; margin-bottom: 16px;
+  .chip:hover {
+    border-color: var(--teal); transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46,224,200,0.25);
   }
-  .project h3 { font-size: 1.1rem; margin-bottom: 6px; }
-  .project .sub { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
-  .project ul { margin-left: 18px; color: var(--muted); }
-  .project li { margin-bottom: 6px; }
-  a { color: var(--accent); text-decoration: none; }
+
+  /* ---- cards ---- */
+  .card { padding: 26px 28px; margin-bottom: 16px; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .card:hover { transform: translateY(-4px); border-color: var(--line); box-shadow: var(--shadow), 0 0 34px rgba(46,224,200,0.12); }
+  .card h3 { font-size: 1.12rem; margin-bottom: 4px; }
+  .card .sub { color: var(--teal-soft); font-size: 0.85rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 0.2px; }
+  .card ul { margin-left: 18px; color: var(--muted); }
+  .card li { margin-bottom: 7px; }
+  .card li::marker { color: var(--teal); }
+  a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .cta { margin-top: 40px; text-align: center; color: var(--muted); }
+
+  /* ---- footer ---- */
+  .cta { margin-top: 44px; text-align: center; color: var(--muted); }
+  .cta a { font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .head-row { gap: 18px; }
+    .medallion { width: 68px; height: 68px; }
+    .medallion span { font-size: 1.5rem; }
+    header { padding: 32px 26px; }
+    .card { padding: 22px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    #bubbles { display: none; }
+  }
 </style>
 </head>
 <body>
+<canvas id="bubbles"></canvas>
+<div class="rays"></div>
+
 <div class="wrap">
 
-  <header>
-    <h1>Sergey Nikitenko</h1>
-    <div class="role">AI Solutions Integrator &amp; AI-Assisted Systems Developer</div>
+  <header class="glass reveal">
+    <div class="head-row">
+      <div class="medallion" aria-hidden="true"><span>SN</span></div>
+      <div>
+        <h1>Sergey Nikitenko</h1>
+        <div class="role">AI Solutions Integrator &amp; AI-Assisted Systems Developer</div>
+      </div>
+    </div>
     <p class="tagline">
       I architect, direct, and ship production software using AI-assisted development —
       connecting local and cloud LLMs to real systems: cybersecurity, data recovery,
@@ -51,8 +153,8 @@
     </p>
   </header>
 
-  <h2>Skills</h2>
-  <div class="skills">
+  <h2 class="reveal">Skills</h2>
+  <div class="skills reveal">
     <span class="chip">AI-assisted development (Cursor / Claude Code / Copilot)</span>
     <span class="chip">Local + cloud LLM integration</span>
     <span class="chip">Model Context Protocol (MCP)</span>
@@ -66,8 +168,8 @@
     <span class="chip">Security architecture &amp; sandboxing</span>
   </div>
 
-  <h2>Experience</h2>
-  <div class="project">
+  <h2 class="reveal">Experience</h2>
+  <div class="glass card reveal">
     <h3>Siemens Mobility — Data Analyst / Operational Services Specialist</h3>
     <div class="sub">Feb 2021 – Present</div>
     <ul>
@@ -77,9 +179,9 @@
     </ul>
   </div>
 
-  <h2>Projects</h2>
+  <h2 class="reveal">Projects</h2>
 
-  <div class="project">
+  <div class="glass card reveal">
     <h3>Argus — Hybrid AI Cybersecurity Platform</h3>
     <div class="sub">EDR · malware detonation sandbox · local/cloud LLM adjudication</div>
     <ul>
@@ -89,7 +191,7 @@
     </ul>
   </div>
 
-  <div class="project">
+  <div class="glass card reveal">
     <h3>Salvage — Low-Level Data Recovery</h3>
     <div class="sub">raw-sector access · MFT parsing · file carving</div>
     <ul>
@@ -98,7 +200,7 @@
     </ul>
   </div>
 
-  <div class="project">
+  <div class="glass card reveal">
     <h3>Akashic Aurora — Agent Memory System (contribution)</h3>
     <div class="sub">open-source fork · MCP server · outcome-credited recall</div>
     <ul>
@@ -107,7 +209,7 @@
     </ul>
   </div>
 
-  <div class="project">
+  <div class="glass card reveal">
     <h3>Coloring Book Web Portal</h3>
     <div class="sub">headless web · affiliate API integration</div>
     <ul>
@@ -115,10 +217,51 @@
     </ul>
   </div>
 
-  <div class="cta">
+  <div class="cta reveal">
     <p>📫 <a href="mailto:Nikitenkos@hotmail.com">Nikitenkos@hotmail.com</a> &nbsp;·&nbsp; 🔗 <a href="https://github.com/Sergey-Nikitenko">github.com/Sergey-Nikitenko</a></p>
   </div>
 
 </div>
+
+<script>
+  // ---- rising bokeh bubbles (Frutiger Aero water motif) ----
+  (function () {
+    var cv = document.getElementById('bubbles');
+    var ctx = cv.getContext('2d');
+    var W, H, bubbles = [];
+    function resize() { W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    var layers = [ {n:26, s:0.35, r:10, a:0.16}, {n:20, s:0.7, r:6, a:0.13}, {n:12, s:1.1, r:16, a:0.09} ];
+    layers.forEach(function (L) {
+      for (var i = 0; i < L.n; i++) bubbles.push({ x: Math.random()*W, y: Math.random()*H, s: L.s, r: L.r, a: L.a, tw: Math.random()*Math.PI*2 });
+    });
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < bubbles.length; i++) {
+        var b = bubbles[i];
+        b.y -= b.s; if (b.y < -24) { b.y = H + 24; b.x = Math.random()*W; }
+        var tw = 0.55 + 0.45 * Math.sin(b.tw + performance.now()*0.001);
+        var g = ctx.createRadialGradient(b.x - b.r*0.3, b.y - b.r*0.3, 0, b.x, b.y, b.r);
+        g.addColorStop(0, 'rgba(234,251,253,' + (0.55 * b.a * tw) + ')');
+        g.addColorStop(0.25, 'rgba(127,240,228,' + (0.4 * b.a * tw) + ')');
+        g.addColorStop(1, 'rgba(127,240,228,0)');
+        ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
+        ctx.fillStyle = g; ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+
+  // ---- reveal on scroll ----
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 </body>
 </html>
