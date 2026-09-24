@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergey Nikitenko — AI Solutions Integrator</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  h1 { font-size: 2.4rem; letter-spacing: -0.5px; }
+  .role { color: var(--accent); font-size: 1.15rem; margin: 8px 0 16px; font-weight: 500; }
+  .tagline { color: var(--muted); max-width: 640px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 16px; letter-spacing: -0.3px; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; font-size: 0.85rem; color: var(--text);
+  }
+  .project {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 16px;
+  }
+  .project h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .project .sub { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
+  .project ul { margin-left: 18px; color: var(--muted); }
+  .project li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .cta { margin-top: 40px; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Sergey Nikitenko</h1>
+    <div class="role">AI Solutions Integrator &amp; AI-Assisted Systems Developer</div>
+    <p class="tagline">
+      I architect, direct, and ship production software using AI-assisted development —
+      connecting local and cloud LLMs to real systems: cybersecurity, data recovery,
+      agent memory, and the web.
+    </p>
+  </header>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <span class="chip">AI-assisted development (Cursor / Claude Code / Copilot)</span>
+    <span class="chip">Local + cloud LLM integration</span>
+    <span class="chip">Model Context Protocol (MCP)</span>
+    <span class="chip">Tool-calling / agent orchestration</span>
+    <span class="chip">Python glue code</span>
+    <span class="chip">JSON-RPC &amp; REST APIs</span>
+    <span class="chip">RAG / memory &amp; recall</span>
+    <span class="chip">Linux / KVM / libvirt</span>
+    <span class="chip">Windows internals (Sysmon)</span>
+    <span class="chip">Filesystem forensics (MFT / carving)</span>
+    <span class="chip">Security architecture &amp; sandboxing</span>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>Argus — Hybrid AI Cybersecurity Platform</h3>
+    <div class="sub">EDR · malware detonation sandbox · local/cloud LLM adjudication</div>
+    <ul>
+      <li>Windows threat-detection engine: heuristic scoring, hot-reloadable rules, Sigma generation, semantic memory.</li>
+      <li>Hybrid AI layer routing high-risk events to local models (Ollama / LM Studio) and cloud APIs for structured verdicts.</li>
+      <li>CAPE/Cuckoo-style detonation chamber: KVM Windows guest, Sysmon telemetry, FakeDNS sinkhole, snapshot-revert, layered kill-switches.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>Salvage — Low-Level Data Recovery</h3>
+    <div class="sub">raw-sector access · MFT parsing · file carving</div>
+    <ul>
+      <li>Recovers deleted and corrupted files from raw disk sectors, NTFS MFT, and signature carving.</li>
+      <li>HTTP dashboard with live scan state, stall detection, and auto-cancellation.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>Akashic Aurora — Agent Memory System (contribution)</h3>
+    <div class="sub">open-source fork · MCP server · outcome-credited recall</div>
+    <ul>
+      <li>Contributed to an existing open-source multi-agent memory platform (fork of balanced7).</li>
+      <li>Built an MCP server, outcome-credited recall, and a DeepSeek Harness integration plugin.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>Coloring Book Web Portal</h3>
+    <div class="sub">headless web · affiliate API integration</div>
+    <ul>
+      <li>Custom web catalog hosting coloring books with Amazon affiliate links and an admin panel.</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <p>📫 <a href="mailto:Nikitenkos@hotmail.com">Nikitenkos@hotmail.com</a> &nbsp;·&nbsp; 🔗 <a href="https://github.com/Sergey-Nikitenko">github.com/Sergey-Nikitenko</a></p>
+  </div>
+
+</div>
+</body>
+</html>
