@@ -10,11 +10,10 @@ A self-contained portfolio for AI Integration Specialist / AI-Assisted Developer
 | `index.html` | Single-page portfolio site (open in a browser, or deploy to Vercel/Netlify/GitHub Pages) |
 | `argus_mcp_server.py` | A Model Context Protocol (MCP) server exposing Argus threat tools to any AI agent |
 
-## Before you ship it
+## Live
 
-Name, email, phone, and location are filled in. Remaining placeholder to replace:
-
-- `[github.com/username]` / `[username]` — create a free GitHub account first
+- **Portfolio:** [github.com/Sergey-Nikitenko/portfolio](https://github.com/Sergey-Nikitenko/portfolio)
+- **Projects:** [argus](https://github.com/Sergey-Nikitenko/argus) · [salvage](https://github.com/Sergey-Nikitenko/salvage)
 
 ## The MCP server (the portfolio centerpiece)
 
