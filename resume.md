@@ -2,6 +2,8 @@
 **AI Solutions Integrator & AI-Assisted Systems Developer**
 Nikitenkos@hotmail.com · (916) 330-8023 · Kannapolis, North Carolina, USA · github.com/Sergey-Nikitenko
 
+![Sergey Nikitenko](profile.jpg)
+
 ---
 
 ## Summary
