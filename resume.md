@@ -45,7 +45,7 @@ An AI-assisted Windows threat-detection system with an integrated local/cloud LL
 ## Work Experience
 
 ### Siemens Mobility — Data Analyst / Operational Services Specialist
-*Feb 2021 – Present*
+*Feb 2022 – Present*
 
 - Built a Power BI KPI report to track and visualize key operational metrics for leadership.
 - Designed a red-tag tracking tool in Microsoft Lists, automated with Power Automate flows to streamline tracking and notifications.
