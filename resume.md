@@ -34,8 +34,8 @@ An AI-assisted Windows threat-detection system with an integrated local/cloud LL
 ### Akashic Aurora — Agent Memory System (open-source contribution)
 - Contributed to an existing open-source multi-agent memory platform (fork of balanced7).
 - Co-built the MCP server (learn / recall / note / status tools over JSON-RPC) with the platform's author.
-- Built the 8-organ "brain" subsystem — valence, dynamic attention, consolidation, working memory, homeostasis, and more — plus the connectome edge graph and the Janus Key graph traversal.
-- Contributed to the outcome-credited recall feedback; wrote the DeepSeek Harness boot-inject plugin.
+- Built the 8-organ "brain" subsystem — valence, dynamic attention, consolidation, working memory, homeostasis, and more — plus the typed semantic edge graph (similar_to / associated_with) and the Janus Key graph traversal.
+- Contributed to the outcome-credited recall feedback; made extensive edits to the DeepSeek Harness boot-inject plugin.
 
 ### Coloring Book Web Portal
 - Built a headless web catalog hosting coloring books with Amazon affiliate integration and a custom admin panel.
